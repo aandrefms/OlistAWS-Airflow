@@ -15,7 +15,7 @@ s3_download_operator = BashOperator(task_id='s3_download',
 # Executar os comandos Pyspark para retornar as solicitações
 # onde o vendedor perdeu o prazo de entrega a transportadora
 spark_prazo_operator = BashOperator(task_id='spark_missed_deadline_job',
-                                              bash_command='python ../scripts/spark_missed_deadline_job.py',
+                                              bash_command='python ../scripts/spark_prazos_perdidos.py',
                                               dag=dag)
 
 # Especificar que a task acima depende que o download dos dados ocorra
