@@ -1,6 +1,9 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
+# Usar o seguinte comando para executar a DAG
+# airflow dags backfill carregamentos_tardios_transportadora.py
+
 
 dag = DAG('carregamentos_atrasados',
           description='Retorna uma lista dos pedidos onde o vendedor perdeu o prazo da transportadora',
@@ -17,7 +20,7 @@ s3_download_operator = BashOperator(task_id='s3_download',
 spark_prazo_operator = BashOperator(task_id='spark_missed_deadline_job',
                                               bash_command='python ../scripts/spark_prazos_perdidos.py',
                                               dag=dag)
-
+    
 # Especificar que a task acima depende que o download dos dados ocorra
 spark_prazo_operator.set_upstream(s3_download_operator)
 
