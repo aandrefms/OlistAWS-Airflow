@@ -1,6 +1,6 @@
 from datetime import datetime
 from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
+from airflow.operators.bash import BashOperator
 # Usar o seguinte comando para executar a DAG
 # airflow dags backfill carregamentos_tardios_transportadora.py
 
@@ -8,7 +8,7 @@ from airflow.operators.bash_operator import BashOperator
 dag = DAG('carregamentos_atrasados',
           description='Retorna uma lista dos pedidos onde o vendedor perdeu o prazo da transportadora',
           schedule_interval='0 5 * * *',
-          start_date=datetime(2019, 7, 10), catchup=False)
+          start_date=datetime(2021, 1, 11), catchup=False)
 
 # Download dos dados da Amazon S3
 s3_download_operator = BashOperator(task_id='s3_download',
