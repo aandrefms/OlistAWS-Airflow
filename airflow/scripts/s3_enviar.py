@@ -9,10 +9,8 @@ nome_s3_bucket = 'seu_s3_bucket_name'
 s3_arquivo = 'brazilian-ecommerce.zip'
 s3_arquivo_csv = 'missed_shipping_limit_orders.csv'
 client = boto3.client('s3',
-                      aws_access_key_id = k_acess,
-                      aws_secret_access_key = k_secret)
-
-print('client')
+                      aws_access_key_id=k_acess,
+                      aws_secret_access_key=k_secret)
 
 transfer = S3Transfer(client)
 

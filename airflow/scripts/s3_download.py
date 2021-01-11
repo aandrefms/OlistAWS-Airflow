@@ -9,7 +9,7 @@ s3_arquivo = 'brazilian-ecommerce.zip'
 download_path = '../../Data/'
 
 client = boto3.client('s3',
-                      aws_access_key_id = k_acess,
-                      aws_secret_access_key = k_secret)
+                      aws_access_key_id=k_acess,
+                      aws_secret_access_key=k_secret)
 
 client.download_file(nome_s3_bucket, s3_arquivo, download_path)
