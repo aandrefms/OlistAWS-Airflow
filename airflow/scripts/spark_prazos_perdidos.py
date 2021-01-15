@@ -67,8 +67,7 @@ WHERE i.shipping_limit_date < o.order_delivered_carrier_date
 # coalesce(1) requires that the file is small enough to fit
 # in the heap memory of the master Spark node and is therefore
 # only recommended for very small datasets
-# Alternatives are converting the Spark df to a Pandas df before
-# writing to disk.
+# Alternatives are converting the Spark df to a Pandas df before writing to disk.
 # Otherwise, it's best practice to maintain the partitions to
 # take advantage of HDFS
 entregas_atrasadas.coalesce(1) \
